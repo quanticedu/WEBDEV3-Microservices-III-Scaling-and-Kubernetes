@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbhost-deployment
+  labels:
+    app: dbhost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dbhost
+  template:
+    metadata:
+      labels:
+        app: dbhost
+    spec:
+      containers:
+      - name: dbhost
+        image: quanticschoolofbusiness/103mysql:latest
+        ports:
+        - containerPort: 3306
